@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rover Team AVVB</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <style>
+        .section4 {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .sponsors-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            margin: 20px 0;
+        }
+        .sponsors-slider {
+            display: flex;
+            gap: 40px;
+            animation: scroll 10s linear infinite;
+            will-change: transform;
+        }
+        .sponsors-slider img {
+            width: 150px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        /* Use JavaScript to duplicate images for seamless effect */
+        </style>
+        
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slider = document.querySelector(".sponsors-slider");
+            const images = Array.from(slider.children);
+        
+            // Duplicate images for a seamless loop
+            images.forEach((img) => {
+                const clone = img.cloneNode(true);
+                slider.appendChild(clone);
+            });
+        });
+        </script>
+    </style>
+
+</head>
+<body>
+    <div class="custom-cursor"></div>
+
+    <!-- Menu Bar -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li class="nav-logo">
+                <a href="https://www.amrita.edu/campus/bengaluru/">
+                    <img src="Images/amrita.png" alt="Logo" class="logo-img"> 
+                </a>
+            </li>
+            <break>
+            </break>
+            <li><a href="#section1">Home</a></li>
+            <li><a href="#section2">About</a></li>
+            <li><a href="#section3">Team</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="#section5">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Section 1 -->
+        <section id="section1" class="section1">
+            <div class="logo">
+                <img src="Images/rover_logo-removebg-preview.png" alt="Logo">
+            </div>
+            <div class="team-name">
+                <img src="Images/Team_name-removebg-preview.png" alt="Team Name">
+            </div>
+            <div class="home-info">
+                <img src="Images/home_bg.png" alt="Home Background">
+            </div>
+        </section>
+        
+        <section id="section2" class="section2">
+            <div class="overlay-box">
+                <h2>About the Team</h2>
+                <p>Our team is a group of passionate individuals who are committed to making a difference in the world of technology and innovation. We work together to achieve greatness and push the boundaries of what's possible.</p>
+                <p>We believe in collaboration, creativity, and continuous learning. Our mission is to develop solutions that can improve lives and transform industries.</p>
+            </div>
+        </section>
+        
+        <section id="section3" class="section3">
+            <div class="video-container">
+                <!-- Embed .mp4 Video -->
+                <video id="playable-video" width="100%" height="auto" muted autoplay loop>
+                    <source src="Videos/IRC (International Rover Challenge) ｜ Team Odyssey ｜ AVVB ｜ Rover Functionality Demonstration ｜.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <br>             
+        <section id="button_sec" class="button_sec">
+            <div class="know-more">
+                <a href="Teams.html" class="button">Know More about the team</a>
+            </div>
+        </section>
+        </section>
+        <section id="section5" class="section5">
+        </section>
+
+        <section id="section4" class="section4">
+            <div>
+                <h2>OUR SPONSORS</h2>
+            </div>
+            <div class="sponsors-container">
+                <div class="sponsors-slider">
+                    <img src="Images/amrita.png" alt="Sponsor 1">
+                    <img src="Images/images.png" alt="Sponsor 2">
+                    <img src="Images/newwro.jpg" alt="Sponsor 3">
+                    <img src="Images/Polymaker.png" alt="Sponsor 4">
+                    <img src="Images/railtellogo.png" alt="Sponsor 5">
+                    <img src="Images/Screenshot 2024-12-31 112142.png" alt="Sponsor 6">
+                    <img src="Images/Screenshot 2024-12-31 112437.png" alt="Sponsor 7">
+                    <img src="Images/lighthouselogo.png" alt="Sponsor 8">
+                </div>
+            </div>
+            <div class="text">
+                <a href="#section1" class="button">Home</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.top = `${e.clientY}px`;
+            cursor.style.left = `${e.clientX}px`;
+        });
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(0.8)';
+        });
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+        });
+    </script>
+    <script>
+        const video = document.getElementById('playable-video');
+    
+        // Unmute and play the video when the section is visible and user has interacted
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (video.paused) {
+                        video.play(); // Play the video if it's paused
+                    }
+    
+                    // Check if the user has interacted with the page
+                    if (!video.muted && video.readyState >= 3) {
+                        video.muted = false; // Unmute the video
+                    }
+                } else {
+                    video.pause(); // Pause video when not visible
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% of the video is visible
+    
+        // Observe the video container
+        observer.observe(video);
+    
+        // Ensure unmuting works after user interaction
+        document.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false; // Unmute the video
+                video.play(); // Play the video if muted
+            }
+        });
+    </script>    
+</body>
+</html>
