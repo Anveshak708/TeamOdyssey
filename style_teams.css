@@ -478,7 +478,7 @@ body {
 /* electronics subsystem */
 
 .card3:nth-child(1) .avatar {
-    background: url(''); /*manan*/
+    background: url('Team_member/Manan.jpeg'); /*manan*/
     background-size: cover;
     background-position: right;
 }
